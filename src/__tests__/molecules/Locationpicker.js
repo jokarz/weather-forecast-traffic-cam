@@ -6,10 +6,12 @@ test('renders default', async () => {
 
 
 test('renders with location data', async () => {
-  const { findByText } = render(<Locationpicker locations={
+  const { findByText } = render(<Locationpicker data={
     [
       {
-        name: 'Marine Parade Drive'
+        "name": "Marine Parade Drive",
+        "area": "City",
+        "forecast": "Fair (Night)"
       }
     ]
   } />);
