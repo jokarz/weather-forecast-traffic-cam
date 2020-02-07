@@ -1,3 +1,7 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import Datepicker from '../../components/molecules/datepicker';
+
 test('renders default', async () => {
   const { findByText } = render(<Datepicker />);
   const ele = findByText(/Select a date/i);

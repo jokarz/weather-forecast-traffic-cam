@@ -1,3 +1,7 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import Datetime from '../../components/organisms/datetime';
+
 test('renders default', async () => {
   const { findByText } = render(<Datetime />);
   const ele = findByText(/Select a date/i);

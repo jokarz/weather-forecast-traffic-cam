@@ -1,3 +1,7 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import Locationpicker from '../../components/molecules/locationpicker';
+
 test('renders default', async () => {
   const { findByText } = render(<Locationpicker />);
   const ele = findByText(/No location found/i);
