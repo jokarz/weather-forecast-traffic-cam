@@ -1,0 +1,22 @@
+$pri-color: #639;
+
+.backDrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  width: 100wh;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.selectedImage {
+  border: solid 2px $pri-color;
+}
+
+.unselectedImage {
+  border: solid 2px rgba(0, 0, 0, 0.125);
+}
