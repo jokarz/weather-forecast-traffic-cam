@@ -1,0 +1,11 @@
+$pri-color: #639;
+
+.header {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.maxHeight {
+  overflow-y: auto;
+  max-height: calc(100vh - 350px);
+}

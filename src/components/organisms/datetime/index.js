@@ -1,47 +1,71 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from "react";
 
-import Datepicker from '../../molecules/datepicker'
-import Timepicker from '../../molecules/timepicker'
+import Datepicker from "../../molecules/datepicker";
+import Timepicker from "../../molecules/timepicker";
 
-import useResize from '../../../util/resizeHook'
+import useResize from "../../../util/resizeHook";
 
-import '../organisms.scss'
+import "../organisms.scss";
 
-const Datetime = ({ date, setDate, time, setTime, loading }) => {
-  const size = useResize()
+const Datetime = ({ date, setDate, time, setTime, loading, invalid }) => {
+  const waitingPhrases = ["Processing...", "Just a moment...", "Retrieving..."];
+  const size = useResize();
+  const ele = useRef(0);
+  const [ownHeight, setOwnHeight] = useState(0);
+  const [top, setTop] = useState(0);
+
+  useEffect(() => {
+    setOwnHeight(ele.current.clientHeight);
+  }, []);
+
+  useEffect(() => {
+    if (!date || !time || loading || (date && time & invalid)) {
+      const newTop = (size.height - 130 - ownHeight) * 0.4;
+      setTop(newTop);
+    } else {
+      setTop(0);
+    }
+  }, [date, time, loading, invalid, size, ownHeight]);
 
   return (
-    <div className="col-auto" style={{
-      marginTop: date && time ? 0 : size.height * 0.25,
-      transition: 'margin 0.3 ease'
-    }}>
-      {
-        !loading ?
-          <>
-            {
-              date && time ?
-                null :
-                <h4 className="text-center pb-3">To start:</h4>
-            }
-            <h4 className="text-center date-time">
-              < Datepicker date={date} setDate={setDate} />
-              <span>{` & `}</span>
-              < Timepicker time={time} setTime={setTime} />
-            </h4>
-          </>
-          :
-          <h4 className="text-center">Processing...</h4>
-      }
+    <div
+      className="col-auto"
+      style={{
+        marginTop: top,
+        transition: "margin 0.3 ease"
+      }}
+      ref={ele}
+    >
+      {!loading ? (
+        <>
+          {date && time && !invalid ? null : (
+            <h3 className="text-center mb-3">To start:</h3>
+          )}
+          <h4 className="text-center date-time">
+            <Datepicker date={date} setDate={setDate} />
+            <span>{` ${date && time ? "at" : "&"} `}</span>
+            <Timepicker time={time} setTime={setTime} />
+          </h4>
+        </>
+      ) : (
+        <h4 className="text-center">
+          <i className="fas fa-spinner fa-pulse"></i>
+          {` ${
+            waitingPhrases[Math.floor(Math.random() * waitingPhrases.length)]
+          }`}
+        </h4>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Datetime
+export default Datetime;
 
 Datetime.defaultProps = {
   date: null,
-  setDate: () => { },
+  setDate: () => {},
   time: null,
-  setTime: () => { },
-  loading: false
-}
+  setTime: () => {},
+  loading: false,
+  invalid: false
+};
