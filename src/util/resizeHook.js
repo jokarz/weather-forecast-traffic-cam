@@ -1,8 +1,7 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 
-
-const useResize = () =>  {
-  const isClient = typeof window === 'object';
+const useResize = () => {
+  const isClient = typeof window === "object";
 
   function getSize() {
     return {
@@ -17,17 +16,17 @@ const useResize = () =>  {
     if (!isClient) {
       return false;
     }
-    
+
     function handleResize() {
       setSize(getSize());
     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
     // eslint-disable-next-line
   }, []);
 
   return size;
-}
+};
 
-export default useResize
+export default useResize;
