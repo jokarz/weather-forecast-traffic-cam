@@ -5,8 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import useResize from "../../../util/resizeHook";
 import "../molecules.scss";
 
-const TimepickerBtn = forwardRef(({ value, onClick }, ref) => (
-  <button className="btn btn-primary" onClick={onClick} ref={ref}>
+const TimepickerBtn = forwardRef(({ value, onClick, bigger }, ref) => (
+  <button
+    className={`btn btn-primary ${bigger ? "btn-lg" : ""}`}
+    onClick={onClick}
+    ref={ref}
+  >
     <i className="fas fa-clock" /> {value || "Select time"}
   </button>
 ));
@@ -24,7 +28,7 @@ const Timepicker = ({ time, setTime }) => {
       showTimeSelect
       showTimeSelectOnly
       dateFormat="h:mm aa"
-      customInput={<TimepickerBtn ref={ref} />}
+      customInput={<TimepickerBtn ref={ref} bigger={size.width > 576} />}
     />
   );
 };

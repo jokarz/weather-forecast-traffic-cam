@@ -44,7 +44,8 @@ const LocationItem = ({ imageUrl, name, onClick, index, count }) => {
                     onClick(name);
                   }}
                 >
-                  View
+                  <i className="fas fa-eye"></i>
+                  {` View`}
                 </button>
               </div>
             </div>

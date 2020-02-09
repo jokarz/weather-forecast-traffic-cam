@@ -5,8 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import useResize from "../../../util/resizeHook";
 import "../molecules.scss";
 
-const DatepickerBtn = forwardRef(({ value, onClick }, ref) => (
-  <button className="btn btn-primary" onClick={onClick} ref={ref}>
+const DatepickerBtn = forwardRef(({ value, onClick, bigger }, ref) => (
+  <button
+    className={`btn btn-primary ${bigger ? "btn-lg" : ""}`}
+    onClick={onClick}
+    ref={ref}
+  >
     <i className="fas fa-calendar-day" /> {value || "Select date"}
   </button>
 ));
@@ -21,7 +25,7 @@ const Datepicker = ({ date, setDate }) => {
       showPopperArrow={false}
       disabledKeyboardNavigation
       onChange={date => setDate(date || null)}
-      customInput={<DatepickerBtn ref={ref} />}
+      customInput={<DatepickerBtn ref={ref} bigger={size.width > 576} />}
     />
   );
 };

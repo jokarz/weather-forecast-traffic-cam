@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Img from "react-image";
 
 import ImagePlaceholder from "../../atoms/imageplaceholder";
@@ -15,13 +15,14 @@ const SelectedPH = () => (
 
 const Modal = ({ show, setShow, title, data }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
+  const modalRef = useRef(null);
   useEffect(() => {
     if (!show) {
       setSelectedImageIndex(0);
       document.documentElement.style.overflow = "auto";
     } else {
       document.documentElement.style.overflow = "hidden";
+      modalRef.current.focus();
     }
   }, [show]);
 
@@ -31,6 +32,12 @@ const Modal = ({ show, setShow, title, data }) => {
       tabIndex="-1"
       role="dialog"
       style={{ display: show ? "block" : "none" }}
+      onKeyDown={e => {
+        if (e.keyCode === 27) {
+          setShow(null);
+        }
+      }}
+      ref={modalRef}
     >
       <div className={`${style.backDrop}`} onClick={() => setShow(null)} />
       <div className="modal-dialog my-4">
@@ -58,12 +65,18 @@ const Modal = ({ show, setShow, title, data }) => {
                       loader={<SelectedPH />}
                       unloader={<SelectedPH />}
                     />
-                    <figcaption className="figure-caption">
-                      {`${
-                        data[selectedImageIndex].area
-                      } area, weather forecasted to be ${data[
-                        selectedImageIndex
-                      ].forecast.toLowerCase()}`}
+                    <figcaption className="text-dark">
+                      {data[selectedImageIndex].forecast ? (
+                        <>
+                          {data[selectedImageIndex].area} area, weather
+                          forecasted to be{" "}
+                          <b>
+                            {data[selectedImageIndex].forecast.toLowerCase()}
+                          </b>
+                        </>
+                      ) : (
+                        ""
+                      )}
                     </figcaption>
                   </figure>
                 ) : null}
@@ -113,7 +126,8 @@ const Modal = ({ show, setShow, title, data }) => {
               className="btn btn-secondary"
               onClick={() => setShow(null)}
             >
-              Close
+              <i className="fas fa-chevron-left"></i>
+              {` Back`}
             </button>
           </div>
         </div>
