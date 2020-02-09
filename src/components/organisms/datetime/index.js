@@ -8,18 +8,30 @@ import useResize from "../../../util/resizeHook";
 import "../organisms.scss";
 
 const Datetime = ({ date, setDate, time, setTime, loading, invalid }) => {
-  const waitingPhrases = ["Processing...", "Just a moment...", "Retrieving..."];
-  const size = useResize();
-  const ele = useRef(0);
   const [ownHeight, setOwnHeight] = useState(0);
   const [top, setTop] = useState(0);
+
+  const size = useResize();
+
+  const waitingPhrases = [
+    "Processing...",
+    "Just a moment...",
+    "Retrieving...",
+    "Fetching...",
+    "Updating..."
+  ];
+
+  const persist = useRef(
+    waitingPhrases[Math.floor(Math.random() * waitingPhrases.length)]
+  );
+  const ele = useRef(0);
 
   useEffect(() => {
     setOwnHeight(ele.current.clientHeight);
   }, []);
 
   useEffect(() => {
-    if (!date || !time || loading || (date && time & invalid)) {
+    if (!date || !time || loading || (date && time && invalid)) {
       const newTop = (size.height - 130 - ownHeight) * 0.4;
       setTop(newTop);
     } else {
@@ -50,9 +62,7 @@ const Datetime = ({ date, setDate, time, setTime, loading, invalid }) => {
       ) : (
         <h4 className="text-center">
           <i className="fas fa-spinner fa-pulse"></i>
-          {` ${
-            waitingPhrases[Math.floor(Math.random() * waitingPhrases.length)]
-          }`}
+          {` ${persist.current}`}
         </h4>
       )}
     </div>
