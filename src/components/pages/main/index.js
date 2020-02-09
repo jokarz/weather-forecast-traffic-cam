@@ -7,15 +7,14 @@ import Locationpicker from "../../organisms/locationpicker";
 import Modal from "../../molecules/modal";
 
 import { getDateString, getTimeString } from "../../../util/dateToString";
-import { lookupCache, updateCache, clearCache } from "../../../util/cacheGeo";
+import { lookupCache, updateCache } from "../../../util/cacheGeo";
 
 import {
   processTrafficData,
   processWeatherData,
   joinData,
   processReverseGeoCode,
-  gmapGeoCode,
-  onemapGeoCode
+  gmapGeoCode
 } from "./processResData";
 
 // Process after date and time are selected
@@ -88,6 +87,16 @@ const Main = props => {
         const newData = JSON.parse(JSON.stringify(olddata));
         if (newData[name]) {
           newData[name].push(newItem);
+
+          newData[name].sort((a, b) => {
+            if (a["area"] < b["area"]) {
+              return -1;
+            }
+            if (a["area"] > b["area"]) {
+              return 1;
+            }
+            return 0;
+          });
         } else {
           newData[name] = [newItem];
         }
@@ -113,7 +122,7 @@ const Main = props => {
     <>
       <div className="container">
         {/* Clearing cache section, only in development */}
-        {process.env.NODE_ENV === "development" ? (
+        {/* {process.env.NODE_ENV === "development" ? (
           <div className="row">
             <div className="col text-center">
               <button
@@ -126,13 +135,14 @@ const Main = props => {
               </button>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
 
         {/* title section */}
         <div className="row">
           <div className="col">
             <h2 className="text-center my-4">
-              Weather Forecast and Traffic Cam
+              <i className="fas fa-cloud"></i> Weather Forecast and{" "}
+              <i className="fas fa-camera"></i> Traffic Cam
             </h2>
           </div>
         </div>
