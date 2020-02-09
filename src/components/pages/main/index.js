@@ -9,8 +9,6 @@ import Modal from "../../molecules/modal";
 import { getDateString, getTimeString } from "../../../util/dateToString";
 import { lookupCache, updateCache, clearCache } from "../../../util/cacheGeo";
 
-import mock from "../../../mock2";
-
 // Process after date and time are selected
 // - traffic and weather endpoints are called concurrently
 // - both data returned is processed, mapped and joined
@@ -61,11 +59,6 @@ const Main = props => {
         setLoading(false);
       });
   };
-
-  // const getData = () => {
-  //   processReverseGeoCode(mock)
-  //   setLoading(false)
-  // }
 
   const processReverseGeoCode = (data, type = "gmap") => {
     let token = "";
@@ -220,12 +213,6 @@ const Main = props => {
   const reqData = useCallback(getData, []);
 
   useEffect(() => {
-    if (data) {
-      console.log("group", data);
-    }
-  }, [data]);
-
-  useEffect(() => {
     if (date && time) {
       setLoading(true);
       setData(null);
@@ -241,7 +228,12 @@ const Main = props => {
         {process.env.NODE_ENV === "development" ? (
           <div className="row">
             <div className="col text-center">
-              <button className="btn btn-danger m-3">
+              <button
+                className="btn btn-danger m-3"
+                onClick={() => {
+                  clearCache();
+                }}
+              >
                 Clear local storage cache
               </button>
             </div>
