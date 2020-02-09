@@ -1,0 +1,34 @@
+[
+  {
+    "timestamp": "2020-01-04T17:09:17+08:00",
+    "image": "url1",
+    "location": {
+      "latitude": 1.323604823,
+      "longitude": 103.8587802
+    },
+    "camera_id": "1701",
+    "image_metadata": {
+      "height": 480,
+      "width": 640,
+      "md5": "ef3a9a8ce469e4e28d674908dde57328"
+    },
+    "area": "Bishan",
+    "forecast": "Fair (Day)"
+  },
+  {
+    "timestamp": "2020-01-04T17:09:17+08:00",
+    "image": "url2",
+    "location": {
+      "latitude": 1.375925022,
+      "longitude": 103.8587986
+    },
+    "camera_id": "1705",
+    "image_metadata": {
+      "height": 480,
+      "width": 640,
+      "md5": "c319d4f2f2c150e7982e642663da3805"
+    },
+    "area": "Ang Mo Kio",
+    "forecast": "Fair (Day)"
+  }
+]

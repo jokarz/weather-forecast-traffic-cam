@@ -1,0 +1,63 @@
+{
+  "plus_code" : {
+     "compound_code" : "8XQJ+84 Singapore",
+     "global_code" : "6PH58XQJ+84"
+  },
+  "results" : [
+     {
+        "address_components" : [
+           {
+              "long_name" : "Airport Boulevard",
+              "short_name" : "Airport Blvd",
+              "types" : [ "route" ]
+           },
+           {
+              "long_name" : "Changi",
+              "short_name" : "Changi",
+              "types" : [ "neighborhood", "political" ]
+           },
+           {
+              "long_name" : "Singapore",
+              "short_name" : "Singapore",
+              "types" : [ "locality", "political" ]
+           },
+           {
+              "long_name" : "Singapore",
+              "short_name" : "SG",
+              "types" : [ "country", "political" ]
+           }
+        ],
+        "formatted_address" : "Airport Blvd, Singapore",
+        "geometry" : {
+           "bounds" : {
+              "northeast" : {
+                 "lat" : 1.3385187,
+                 "lng" : 103.9804949
+              },
+              "southwest" : {
+                 "lat" : 1.33713,
+                 "lng" : 103.9799753
+              }
+           },
+           "location" : {
+              "lat" : 1.3378282,
+              "lng" : 103.9802249
+           },
+           "location_type" : "GEOMETRIC_CENTER",
+           "viewport" : {
+              "northeast" : {
+                 "lat" : 1.339173330291502,
+                 "lng" : 103.9815840802915
+              },
+              "southwest" : {
+                 "lat" : 1.336475369708498,
+                 "lng" : 103.9788861197085
+              }
+           }
+        },
+        "place_id" : "ChIJF0rS8cY82jERrPm7bvPCdNM",
+        "types" : [ "route" ]
+     }
+  ],
+  "status" : "OK"
+}
