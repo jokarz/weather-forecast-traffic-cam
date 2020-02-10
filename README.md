@@ -79,4 +79,4 @@ One Map: https://developers.onemap.sg/privateapi/commonsvc/revgeocode
 
 # Environment variables
 
-Best practices dictates that keys and token should not be committed into git. However for the assessment, token and key are added. They will be made invalid after the assessment.
+Best practices dictate that keys and tokens should not be committed into git. However for the assessment, token and key are added. They will be made invalid after the assessment.
