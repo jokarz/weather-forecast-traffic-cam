@@ -4,8 +4,8 @@ Simple frontend application displaying images taking by traffic camera in Singap
 
 # Launching locally
 
-* Made sure [Node,js](https://nodejs.org/en/download/) is installed
-* Clone the repo
+* Made sure [Node.js](https://nodejs.org/en/download/) is installed
+* Clone this repo
 * Head on to the terminal (set directory at the root directory of this repo) and type ```npm i```
 * To run production version use ```npm run serve```
 * To run development version use ```npm run start```
@@ -66,3 +66,17 @@ The components are structured in this way:
 
 Following the design and principle of [atomic design](https://dev.to/giteden/atomic-design-with-react-and-bit-simplify-a-complex-ui-1k1f), creating complex UI by build up from smaller and simpler components
 
+# Endpoints used
+
+Traffic camera: https://api.data.gov.sg/v1/transport/traffic-images
+
+Weather forecast: https://api.data.gov.sg/v1/environment/2-hour-weather-forecast
+
+Google Map: https://maps.googleapis.com/maps/api/geocode/json
+
+One Map: https://developers.onemap.sg/privateapi/commonsvc/revgeocode
+
+
+# Environment variables
+
+Best practices dictates that keys and token should not be committed into git. However for the assessment, token and key are added. They will be made invalid after the assessment.
