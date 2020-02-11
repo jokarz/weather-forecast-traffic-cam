@@ -30,7 +30,9 @@ test("renders with data", async () => {
       ]}
     />
   );
-  let ele = await findByText(/area1.*forecast1/i);
+  let ele = await findByText(/area1/i);
+  expect(ele).toBeTruthy();
+  ele = await findByText(/forecast1/i);
   expect(ele).toBeTruthy();
   ele = container.querySelectorAll(".list-inline-item").length;
   expect(ele).toBe(3);
