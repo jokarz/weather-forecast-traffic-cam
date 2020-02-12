@@ -2,6 +2,8 @@
 
 Simple frontend application displaying images taking by traffic camera in Singapore and weather forecast in the area 
 
+![](https://github.com/jokarz/weather-forecast-traffic-cam/blob/master/demo/demo.gif)
+
 # Launching locally
 
 * Made sure [Node.js](https://nodejs.org/en/download/) is installed
@@ -80,3 +82,4 @@ One Map: https://developers.onemap.sg/privateapi/commonsvc/revgeocode
 # Environment variables
 
 Best practices dictate that keys and tokens should not be committed into git. However for the assessment, token and key are added. They will be made invalid after the assessment.
+
