@@ -53,14 +53,25 @@ const Main = props => {
           const wData = processWeatherData(weather.data);
           if (tData) {
             const newData = joinData(tData, wData);
-            processReverseGeoCode(
-              newData,
-              gmapGeoCode,
-              "gmap",
-              lookupCache,
-              updateCache,
-              updateData
-            );
+            if (REACT_APP_REVGEO === 'gmap'){
+              processReverseGeoCode(
+                newData,
+                gmapGeoCode,
+                "gmap",
+                lookupCache,
+                updateCache,
+                updateData
+              );
+            }else{
+              processReverseGeoCode(
+                newData,
+                onemapGeoCode,
+                "onemap",
+                lookupCache,
+                updateCache,
+                updateData
+              );
+            }
 
             // wait .8sec
             setTimeout(() => {
