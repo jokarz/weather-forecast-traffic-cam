@@ -14,7 +14,8 @@ import {
   processWeatherData,
   joinData,
   processReverseGeoCode,
-  gmapGeoCode
+  gmapGeoCode,
+  onemapGeoCode
 } from "./processResData";
 
 // Process after date and time are selected
@@ -53,7 +54,7 @@ const Main = props => {
           const wData = processWeatherData(weather.data);
           if (tData) {
             const newData = joinData(tData, wData);
-            if (REACT_APP_REVGEO === 'gmap'){
+            if (process.env.REACT_APP_REVGEO === 'gmap'){
               processReverseGeoCode(
                 newData,
                 gmapGeoCode,

@@ -2,14 +2,29 @@
 
 Simple frontend application displaying images taking by traffic camera in Singapore and weather forecast in the area 
 
-![](https://github.com/jokarz/weather-forecast-traffic-cam/blob/master/demo/demo.gif)
+# Demo
 
-# Launching locally
+<p align="center">
+<img src="https://github.com/jokarz/weather-forecast-traffic-cam/blob/master/demo/demo.gif"/>
+</p>
+
+# Getting Started
 
 * Made sure [Node.js](https://nodejs.org/en/download/) is installed
-* Clone this repo
+* Clone this repository
 * Head on to the terminal (set directory at the root directory of this repo) and type ```npm i```
-* To run production version use ```npm run serve```
+* Edit .env to specify which reverse geocoding api to use.
+```txt
+REACT_APP_REVGEO=gmap
+```
+Enter ```gmap``` for Google Map, ```onemap``` for One Map
+*  Thereafter input in their respective token in .env as well
+```txt
+REACT_APP_GMAP_TOKEN=your Google Map api key here
+REACT_APP_ONEMAP_TOKEN=your One Map token here
+```
+If you intend to use Google Map, you can leave One Map's one blank, vice versa
+* There after in terminal type ```npm run serve```
 * To run development version use ```npm run start```
 
 
@@ -77,9 +92,4 @@ Weather forecast: https://api.data.gov.sg/v1/environment/2-hour-weather-forecast
 Google Map: https://maps.googleapis.com/maps/api/geocode/json
 
 One Map: https://developers.onemap.sg/privateapi/commonsvc/revgeocode
-
-
-# Environment variables
-
-Best practices dictate that keys and tokens should not be committed into git. However for the assessment, token and key are added. They will be made invalid after the assessment.
 
